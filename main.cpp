@@ -14,7 +14,7 @@ using namespace std;
  *
  * entrada:
    3 2 1 0
- * sortida:
+ * sortida
    1 1 2 1 2 3
    N.ELEMENTS: 6
  */
