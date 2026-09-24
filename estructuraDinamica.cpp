@@ -21,6 +21,22 @@ estructuraDinamica::estructuraDinamica( )
 	final = NULL;
 }
 
+int estructuraDinamica::nElements() const{
+	int n = 0;
+	if(final != nullptr){
+		node * inici = final->seguent;
+		node * actual = inici;
+
+		n = 1;
+		actual = actual->seguent;
+		while(actual != inici){
+			n++;
+			actual = actual->seguent;
+		}
+	}
+	return n;
+	
+}
 
 
 void estructuraDinamica::Llistar() const
