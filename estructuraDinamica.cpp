@@ -54,23 +54,43 @@ int estructuraDinamica::nElements() const{
 	
 }
 
-void estructuraDinamica::OmplirInici(int n){
-    
-        node * p = new node;
-        if(final == nullptr){
-            p->dada = 1;
-            p->seguent = p;
-            final = p;
+void estructuraDinamica::OmplirInici(int n) {
+
+    if (final == nullptr) {
+        node *p = new node;
+        p->dada = 1;
+        p->seguent = p;
+        final = p;
+
+        for (int i = 2; i <= n; i++) {
+            node *nou = new node;
+            nou->dada = i;
+            nou->seguent = final->seguent;
+            final->seguent = nou;
+            final = nou;
         }
-        else{
-            node * inici = final->seguent;
-            for(int i=2;i<=n; i++){
-                node * p = new node;
-                p->dada = i;
-                final->seguent = p;
-                final = p;
-                inici = p;
+    }
+    else {
+        node *iniciAntic = final->seguent;
+        node *iniciNou = new node;
+
+        iniciNou->dada = 1;
+        iniciNou->seguent = iniciAntic;
+
+        final->seguent = iniciNou;
+
+        node *p = iniciNou;
+
+        for (int i = 2; i <= n; i++) {
+            node *nou = new node;
+            nou->dada = i;
+
+            nou->seguent = p->seguent;
+            p->seguent = nou;
+            p = nou;
         }
+
+        p->seguent = iniciAntic;
     }
 }
 
